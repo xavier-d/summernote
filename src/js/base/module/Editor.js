@@ -673,6 +673,30 @@ define([
       rng.insertNode(table.createTable(dimension[0], dimension[1], options));
     });
 
+     /**
+     * @method addRow
+     *
+     *
+     */
+    this.addRow = function ($editable, position) {
+      var rng = this.createRange($editable);
+      if (rng.isCollapsed() && rng.isOnCell()) {
+        table.addRow(rng, position);
+      }
+    };
+
+     /**
+     * @method addCol
+     *
+     *
+     */
+    this.addCol = function ($editable, position) {
+      var rng = this.createRange($editable);
+      if (rng.isCollapsed() && rng.isOnCell()) {
+        table.addCol(rng, position);
+      }
+    };
+
     /**
      * float me
      *

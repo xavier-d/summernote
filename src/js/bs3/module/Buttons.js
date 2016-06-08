@@ -35,6 +35,7 @@ define([
       this.addToolbarButtons();
       this.addImagePopoverButtons();
       this.addLinkPopoverButtons();
+      this.addTablePopoverButtons();
       this.fontInstalledMap = {};
     };
 
@@ -556,6 +557,24 @@ define([
           contents: ui.icon(options.icons.unlink),
           tooltip: lang.link.unlink,
           click: context.createInvokeHandler('editor.unlink')
+        }).render();
+      });
+    };
+
+    /**
+     * table : [
+     *
+     *
+     *
+     * ],
+     */
+    this.addTablePopoverButtons = function () {
+      // Image Size Buttons
+      context.memo('button.addRowDown', function () {
+        return ui.button({
+          contents: '<span class="note-table-addrowdown"><i class="fa fa-plus"></i></span>',
+          tooltip: 'Add row after',
+          click: context.createInvokeHandler('table.addRow')
         }).render();
       });
     };
