@@ -485,6 +485,7 @@ define([
      * ],
      */
     this.addImagePopoverButtons = function () {
+      console.log('addImagePopoverButtons');
       // Image Size Buttons
       context.memo('button.imageSize100', function () {
         return ui.button({
@@ -569,10 +570,11 @@ define([
      * ],
      */
     this.addTablePopoverButtons = function () {
+      console.log('addTablePopoverButtons');
       // Image Size Buttons
       context.memo('button.addRowDown', function () {
         return ui.button({
-          contents: '<span class="note-table-addrowdown"><i class="fa fa-plus"></i></span>',
+          contents: '<span class="note-table-addrowdown">Add Row down</span>',
           tooltip: 'Add row after',
           click: context.createInvokeHandler('table.addRow')
         }).render();
@@ -665,6 +667,7 @@ define([
     };
 
     this.tableMoveHandler = function (event) {
+      console.log('tableMoveHandler');
       var PX_PER_EM = 18;
       var $picker = $(event.target.parentNode); // target is mousecatcher
       var $dimensionDisplay = $picker.next();

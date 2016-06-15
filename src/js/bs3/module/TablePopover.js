@@ -9,10 +9,12 @@ define([
     var options = context.options;
 
     this.shouldInitialize = function () {
+      console.log('Table: shouldInitialize %o', options.popover.table);
       return !list.isEmpty(options.popover.table);
     };
 
     this.initialize = function () {
+      console.log('table popover: initialize');
       this.$popover = ui.popover({
         className: 'note-table-popover'
       }).render().appendTo('body');
@@ -22,11 +24,13 @@ define([
     };
 
     this.destroy = function () {
+      console.log('table destroy');
       this.$popover.remove();
     };
 
     this.update = function (target) {
-      if (dom.isImg(target)) {
+      console.log('table update');
+      if (dom.isCell(target)) {
         var pos = dom.posFromPlaceholder(target);
         this.$popover.css({
           display: 'block',
@@ -39,6 +43,7 @@ define([
     };
 
     this.hide = function () {
+      console.log('table hide');
       this.$popover.hide();
     };
   };

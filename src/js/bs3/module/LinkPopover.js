@@ -23,6 +23,7 @@ define([
     };
 
     this.initialize = function () {
+      console.log('link initialize');
       this.$popover = ui.popover({
         className: 'note-link-popover',
         callback: function ($node) {
@@ -36,10 +37,12 @@ define([
     };
 
     this.destroy = function () {
+      console.log('link destroy');
       this.$popover.remove();
     };
 
     this.update = function () {
+      console.log('link update');
       // Prevent focusing on editable when invoke('code') is executed
       if (!context.invoke('editor.hasFocus')) {
         this.hide();

@@ -35,6 +35,7 @@ define([
      * @return {Node}
      */
     this.addRow = function (rng, position) {
+      console.log('addRow');
       var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
 
       var currentTr = $(cell).closest('tr');

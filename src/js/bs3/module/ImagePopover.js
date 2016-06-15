@@ -9,10 +9,12 @@ define([
     var options = context.options;
 
     this.shouldInitialize = function () {
+      console.log('image: shouldInitialize %o', options.popover.image);
       return !list.isEmpty(options.popover.image);
     };
 
     this.initialize = function () {
+      console.log('image initialize');
       this.$popover = ui.popover({
         className: 'note-image-popover'
       }).render().appendTo('body');
@@ -22,10 +24,12 @@ define([
     };
 
     this.destroy = function () {
+      console.log('image destroy');
       this.$popover.remove();
     };
 
     this.update = function (target) {
+      console.log('image update');
       if (dom.isImg(target)) {
         var pos = dom.posFromPlaceholder(target);
         this.$popover.css({
@@ -39,6 +43,7 @@ define([
     };
 
     this.hide = function () {
+      console.log('image hide');
       this.$popover.hide();
     };
   };
