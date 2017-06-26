@@ -91,7 +91,7 @@ define([
         ],
         table: [
           ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
-          ['delete', ['deleteRow', 'deleteCol']]
+          ['delete', ['deleteRow', 'deleteCol', 'deleteTable']]
         ],
         air: [
           ['color', ['color']],
@@ -107,6 +107,7 @@ define([
 
       width: null,
       height: null,
+      linkTargetBlank: true,
 
       focus: false,
       tabSize: 4,
@@ -114,6 +115,7 @@ define([
       shortcuts: true,
       textareaAutoSync: true,
       direction: null,
+      tooltip: 'auto',
 
       styleTags: ['p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
 
@@ -235,12 +237,12 @@ define([
         'alignJustify': 'note-icon-align-justify',
         'alignLeft': 'note-icon-align-left',
         'alignRight': 'note-icon-align-right',
-        'arrowDown': 'note-icon-arrow-circle-down',
-        'arrowLeft': 'note-icon-arrow-circle-left',
-        'arrowRight': 'note-icon-arrow-circle-right',
-        'arrowUp': 'note-icon-arrow-circle-up',
-        'arrowsH': 'note-icon-arrows-h',
-        'arrowsV': 'note-icon-arrows-v',
+        'rowBelow': 'note-icon-row-below',
+        'colBefore': 'note-icon-col-before',
+        'colAfter': 'note-icon-col-after',
+        'rowAbove': 'note-icon-row-above',
+        'rowRemove': 'note-icon-row-remove',
+        'colRemove': 'note-icon-col-remove',
         'indent': 'note-icon-align-indent',
         'outdent': 'note-icon-align-outdent',
         'arrowsAlt': 'note-icon-arrows-alt',

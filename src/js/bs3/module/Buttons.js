@@ -19,7 +19,7 @@ define([
       if (!options.shortcuts || !shortcut) {
         return '';
       }
-      
+
       if (agent.isMac) {
         shortcut = shortcut.replace('CMD', '⌘').replace('SHIFT', '⇧');
       }
@@ -90,7 +90,7 @@ define([
           className: 'note-btn-bold',
           contents: ui.icon(options.icons.bold),
           tooltip: lang.font.bold + representShortcut('bold'),
-          click: context.createInvokeHandler('editor.bold')
+          click: context.createInvokeHandlerAndUpdateState('editor.bold')
         }).render();
       });
 
@@ -99,7 +99,7 @@ define([
           className: 'note-btn-italic',
           contents: ui.icon(options.icons.italic),
           tooltip: lang.font.italic + representShortcut('italic'),
-          click: context.createInvokeHandler('editor.italic')
+          click: context.createInvokeHandlerAndUpdateState('editor.italic')
         }).render();
       });
 
@@ -108,7 +108,7 @@ define([
           className: 'note-btn-underline',
           contents: ui.icon(options.icons.underline),
           tooltip: lang.font.underline + representShortcut('underline'),
-          click: context.createInvokeHandler('editor.underline')
+          click: context.createInvokeHandlerAndUpdateState('editor.underline')
         }).render();
       });
 
@@ -125,7 +125,7 @@ define([
           className: 'note-btn-strikethrough',
           contents: ui.icon(options.icons.strikethrough),
           tooltip: lang.font.strikethrough + representShortcut('strikethrough'),
-          click: context.createInvokeHandler('editor.strikethrough')
+          click: context.createInvokeHandlerAndUpdateState('editor.strikethrough')
         }).render();
       });
 
@@ -134,7 +134,7 @@ define([
           className: 'note-btn-superscript',
           contents: ui.icon(options.icons.superscript),
           tooltip: lang.font.superscript,
-          click: context.createInvokeHandler('editor.superscript')
+          click: context.createInvokeHandlerAndUpdateState('editor.superscript')
         }).render();
       });
 
@@ -143,7 +143,7 @@ define([
           className: 'note-btn-subscript',
           contents: ui.icon(options.icons.subscript),
           tooltip: lang.font.subscript,
-          click: context.createInvokeHandler('editor.subscript')
+          click: context.createInvokeHandlerAndUpdateState('editor.subscript')
         }).render();
       });
 
@@ -164,7 +164,7 @@ define([
             template: function (item) {
               return '<span style="font-family:' + item + '">' + item + '</span>';
             },
-            click: context.createInvokeHandler('editor.fontName')
+            click: context.createInvokeHandlerAndUpdateState('editor.fontName')
           })
         ]).render();
       });
@@ -564,58 +564,65 @@ define([
 
     /**
      * table : [
-     *
-     *
-     *
+     *  ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+     *  ['delete', ['deleteRow', 'deleteCol', 'deleteTable']]
      * ],
      */
     this.addTablePopoverButtons = function () {
       context.memo('button.addRowUp', function () {
         return ui.button({
           className: 'btn-md',
-          contents: ui.icon(options.icons.arrowUp),
-          tooltip: 'Add row before',
+          contents: ui.icon(options.icons.rowAbove),
+          tooltip: lang.table.addRowAbove,
           click: context.createInvokeHandler('editor.addRow', 'top')
         }).render();
       });
       context.memo('button.addRowDown', function () {
         return ui.button({
           className: 'btn-md',
-          contents: ui.icon(options.icons.arrowDown),
-          tooltip: 'Add row after',
+          contents: ui.icon(options.icons.rowBelow),
+          tooltip: lang.table.addRowBelow,
           click: context.createInvokeHandler('editor.addRow', 'bottom')
         }).render();
       });
       context.memo('button.addColLeft', function () {
         return ui.button({
           className: 'btn-md',
-          contents: ui.icon(options.icons.arrowLeft),
-          tooltip: 'Add column  left',
+          contents: ui.icon(options.icons.colBefore),
+          tooltip: lang.table.addColLeft,
           click: context.createInvokeHandler('editor.addCol', 'left')
         }).render();
       });
       context.memo('button.addColRight', function () {
         return ui.button({
           className: 'btn-md',
-          contents: ui.icon(options.icons.arrowRight),
-          tooltip: 'Add column right',
+          contents: ui.icon(options.icons.colAfter),
+          tooltip: lang.table.addColRight,
           click: context.createInvokeHandler('editor.addCol', 'right')
         }).render();
       });
       context.memo('button.deleteRow', function () {
         return ui.button({
           className: 'btn-md',
-          contents: ui.icon(options.icons.arrowsH),
-          tooltip: 'delete row',
+          contents: ui.icon(options.icons.rowRemove),
+          tooltip: lang.table.delRow,
           click: context.createInvokeHandler('editor.deleteRow')
         }).render();
       });
       context.memo('button.deleteCol', function () {
         return ui.button({
           className: 'btn-md',
-          contents: ui.icon(options.icons.arrowsV),
-          tooltip: 'delete col',
+          contents: ui.icon(options.icons.colRemove),
+          tooltip: lang.table.delCol,
           click: context.createInvokeHandler('editor.deleteCol')
+        }).render();
+      });
+      context.memo('button.deleteTable', function () {
+        return ui.button({
+          className: 'btn-md',
+          contents: ui.icon(options.icons.trash),
+          tooltip: lang.table.delTable,
+          click: context.createInvokeHandler('editor.deleteTable')
         }).render();
       });
     };
